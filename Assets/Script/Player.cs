@@ -5,15 +5,17 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
-    Vector2 inputVec;    // have a direction
-    Rigidbody2D rigid;   // have a physics
-    SpriteRenderer spriter; // have a sprite renderer
-    float speed = 3.0f;  // have a speed
+    public float speed = 5.0f;  // have a speed
+    Vector2 inputVec;           // have a direction
+    Rigidbody2D rigid;          // have a physics
+    SpriteRenderer spriter;     // have a sprite renderer
+    Animator animator;          // have an animator
 
 
     void Awake() {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
 
     void LateUpdate() 
     {
+        animator.SetFloat("Speed", inputVec.magnitude);
         if (inputVec.x != 0)
         {
             spriter.flipX = inputVec.x < 0;
