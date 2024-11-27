@@ -38,4 +38,9 @@ public class Player : MonoBehaviour
             spriter.flipX = inputVec.x < 0;
         }
     }
+    
+    public Vector2 getInputVec()
+    {
+        return inputVec;
+    }
 }
